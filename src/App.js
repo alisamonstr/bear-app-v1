@@ -13,7 +13,7 @@ class App extends Component {
         <ConnectedRouter history={this.props.history}>
             <Switch>
                 <Route exact path="/" component={MainContainer} />
-                <Route exact path="/about" component={AboutContainer} />
+                <Route exactпотcomponent={AboutContainer} />
             </Switch>
         </ConnectedRouter>
     );

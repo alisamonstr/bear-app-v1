@@ -1,0 +1,25 @@
+.toolbar-parents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.toolbar {
+    background: linear-gradient(45deg, #F8476D 30%, #FBC925 90%);
+    margin: 10px 10px;
+    color: white;
+    min-height: 80% !important;
+    width: 90%;
+
+}
+.hat-header{
+    height: 100px;
+}
+.menu-header{
+    height: 50px ;
+}
+.button-header:hover {
+    background-color: rgba(255, 255, 255, 0.12) !important;
+}
+.button-header {
+    color: white !important;
+}

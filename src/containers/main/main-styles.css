@@ -1,0 +1,10 @@
+.block-about {
+    background: #FED0DB;
+    margin: 0 3.5%;
+    height: 85vh;
+}
+h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
