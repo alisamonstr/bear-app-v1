@@ -1,0 +1,11 @@
+image: node:latest
+
+pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - npm install -g surge
+            - npm install
+            - npm run build
+            - surge build bears-store.surge.sh
