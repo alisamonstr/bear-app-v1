@@ -5,7 +5,7 @@ pipelines:
     master:
       - step:
           script:
-            - npm install -g surge
-            - npm install
-            - npm run build
+            - yarn global add surge
+            - yarn
+            - yarn build
             - surge build bears-store.surge.sh
