@@ -12,7 +12,7 @@ export class MainContainer extends Component {
 
                 <h1>Главная</h1>
                     <h3>текст</h3>
-                <Link to="/about">о нас</Link>
+                <Link to="/about">каталог</Link>
 
                 </div>
             </HeaderLayout>

@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import Button from 'material-ui/Button';
 import { Route, Switch, Redirect } from 'react-router'
 import { ConnectedRouter } from 'react-router-redux'
-import { MainContainer,  AboutContainer } from './containers'
+import { MainContainer,  CatalogueContainer, HowToBuyContainer } from './containers'
 
 class App extends Component {
   render() {
@@ -13,7 +13,8 @@ class App extends Component {
         <ConnectedRouter history={this.props.history}>
             <Switch>
                 <Route exact path="/" component={MainContainer} />
-                <Route exactпотcomponent={AboutContainer} />
+                <Route exact path="/catalogue/:url" component={CatalogueContainer} />
+                <Route exact path="/how-to-buy" component={HowToBuyContainer} />
             </Switch>
         </ConnectedRouter>
     );

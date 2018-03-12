@@ -2,9 +2,8 @@ import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 import './layout-styles.css'
-
+import {NavigationButton} from '../button'
 
 export const HeaderLayout = ({ children, ...props }) => (
     <div {...props}>
@@ -15,11 +14,11 @@ export const HeaderLayout = ({ children, ...props }) => (
                 </Typography>
             </Toolbar>
             <Toolbar className="menu-header toolbar" >
-                <Button className='button-header'> Главная </Button>
-                <Button className='button-header'> Мишки </Button>
-                <Button className='button-header'> Другие звери</Button>
-                <Button className='button-header'> Не игрушки </Button>
-                <Button className='button-header'> Как заказать </Button>
+                <NavigationButton to='/'> Главная </NavigationButton>
+                <NavigationButton to='/catalogue/bears'> Мишки </NavigationButton>
+                <NavigationButton to='/catalogue/toys'> Другие звери</NavigationButton>
+                <NavigationButton to='/catalogue/others'> Не игрушки </NavigationButton>
+                <NavigationButton to='/how-to-buy'> Как заказать </NavigationButton>
             </Toolbar>
         </div>
         {children}

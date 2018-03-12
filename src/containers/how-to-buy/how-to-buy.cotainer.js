@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {HeaderLayout} from '../../components'
 
-export class AboutContainer extends Component {
+export class HowToBuyContainer extends Component {
     render() {
         return (
             <HeaderLayout>

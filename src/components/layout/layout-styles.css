@@ -17,9 +17,3 @@
 .menu-header{
     height: 50px ;
 }
-.button-header:hover {
-    background-color: rgba(255, 255, 255, 0.12) !important;
-}
-.button-header {
-    color: white !important;
-}
