@@ -1,0 +1,11 @@
+image: node:latest
+
+pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - yarn global add surge
+            - yarn
+            - yarn build
+            - surge build bears-store.surge.sh
