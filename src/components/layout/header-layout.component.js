@@ -15,12 +15,15 @@ export const HeaderLayout = ({ children, ...props }) => (
             </Toolbar>
             <Toolbar className="menu-header toolbar" >
                 <NavigationButton to='/'> Главная </NavigationButton>
-                <NavigationButton to='/catalogue/bears'> Мишки </NavigationButton>
-                <NavigationButton to='/catalogue/toys'> Другие звери</NavigationButton>
-                <NavigationButton to='/catalogue/others'> Не игрушки </NavigationButton>
+                <NavigationButton to='/catalog/bears'> Мишки </NavigationButton>
+                <NavigationButton to='/catalog/toys'> Другие звери</NavigationButton>
+                <NavigationButton to='/catalog/others'> Не игрушки </NavigationButton>
                 <NavigationButton to='/how-to-buy'> Как заказать </NavigationButton>
             </Toolbar>
         </div>
-        {children}
+        <div className="layout-wrapper">
+            {children}
+        </div>
+
     </div>
 )

@@ -1,8 +1,4 @@
-.block-about {
-    background: #FAE9CB;
-    margin: 0 3.5%;
-    height: 85vh;
-}
+
 h1 {
     display: flex;
     flex-direction: column;

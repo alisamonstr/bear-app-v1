@@ -17,3 +17,9 @@
 .menu-header{
     height: 50px ;
 }
+
+.layout-wrapper {
+    background: #FAE9CB;
+    margin: 0 3.5%;
+    height: 85vh;
+}
