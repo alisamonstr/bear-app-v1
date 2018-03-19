@@ -4,12 +4,15 @@ import './catalog-styles.css'
 export class CatalogItem extends React.Component {
     render() {
         return (
-           <div>
+           <div className='item-wrapper'>
                <div>
                 {this.props.item.title}
             </div>
 
-           <div> {this.props.item.images.map(ig => <div className="img" style={{ background: `url('${ig}') no-repeat 100%` }} /> )} </div>
+           <div className='image-wrapper'> <div className="catalog-item-image" style={{ background: `url('${this.props.item.images[0]}') center center no-repeat` }} />  </div>
+               <div>
+                   {this.props.item.price}
+               </div>
            </div>
         )
     }

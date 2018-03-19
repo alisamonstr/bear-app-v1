@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {HeaderLayout} from '../../components'
 import {CatalogItem} from "../../components/catalog/catalog-item.component";
+import './catalog-styles.css'
 
 export class CatalogContainer extends Component {
     render() {
@@ -17,7 +18,8 @@ export class CatalogContainer extends Component {
                 price: 1111,
                 size: 'M',
                 category: ['bear'],
-                tag: ['bear']
+                tag: ['bear'],
+                id: [1]
 
             },
             {
@@ -29,7 +31,8 @@ export class CatalogContainer extends Component {
                 'https://sun1-1.userapi.com/c840538/v840538188/33629/y-BgSGrP0fs.jpg'],
                 price: 43433,
                 category: ['toys'],
-                tag: ['rabbit']
+                tag: ['rabbit'],
+                id: [2]
 
             },
             {
@@ -42,7 +45,8 @@ export class CatalogContainer extends Component {
                 price: 77777,
                 size: 'S',
                 category: ['bears'],
-                tag: ['bear']
+                tag: ['bear'],
+                id: [3]
 
             }
         ]
@@ -50,7 +54,7 @@ export class CatalogContainer extends Component {
             <HeaderLayout>
                 {this.props.match.params.url}
                 <h3>Каталог</h3>
-                <div>
+                <div className='catalog-wrapper'>
                     { items.map(item => <CatalogItem item={item}/>)}
                 </div>
                 <Link to="/">главная</Link>
