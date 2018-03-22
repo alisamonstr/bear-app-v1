@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import {HeaderLayout} from '../../components'
 import {CatalogItem} from "../../components/catalog/catalog-item.component";
 import './catalog-styles.css'
+import{ItemPageContainer} from "../item-page/item-page.container";
 
 export class CatalogContainer extends Component {
     render() {
@@ -55,7 +56,7 @@ export class CatalogContainer extends Component {
                 {this.props.match.params.url}
                 <h3>Каталог</h3>
                 <div className='catalog-wrapper'>
-                    { items.map(item => <CatalogItem item={item}/>)}
+                    { items.map(item => <CatalogItem item={item}/> )}
                 </div>
                 <Link to="/">главная</Link>
             </HeaderLayout>
