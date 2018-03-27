@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
 import {HeaderLayout} from '../../components'
 import './item-page-styles.css'
 import { connect } from 'react-redux'
