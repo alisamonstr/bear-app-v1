@@ -1,5 +1,5 @@
 .catalog-item-image{
-    background-size: contain;
+    background-size: contain !important;
     width: 250px;
     height: 350px;
     margin: 20px 0;
