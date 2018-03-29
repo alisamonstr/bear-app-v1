@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {HeaderLayout} from '../../components'
 import './item-page-styles.css'
 import { connect } from 'react-redux'
+import {ItemGallery} from "../../components/item-gallery/item-gallery.component";
 
 const mapStateToProps = (state) => {
     return {items: state.catalogItems }
@@ -14,9 +15,7 @@ const mapStateToProps = (state) => {
         return (
             <HeaderLayout>
                 { item.title }
-                <div className='item-page-images'>
-                    {item.images.map(i => <div className="item-page-image" style={{ background: `url('${i}')  no-repeat 100%` }} />)}
-                </div>
+                <ItemGallery images={item.images}/>
             </HeaderLayout>
         )
     }

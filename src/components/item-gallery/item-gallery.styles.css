@@ -1,0 +1,25 @@
+.item-gallery-image{
+    background-size: cover !important;
+    width: 125px;
+    height: 125px;
+    margin: 10px;
+    padding: 10px;
+
+}
+.item-gallery-big-image{
+    background-size: contain !important;
+    width: 400px;
+    height: 500px;
+    margin: 20px 0;
+
+}
+.item-gallery-images {
+    display:flex;
+}
+.item-gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+}
