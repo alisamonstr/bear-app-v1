@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 const getClasses = (to, router) => {
-    console.log(router)
     if (router && router.location && to === router.location.pathname)  {
         return { label: 'active' }
     }

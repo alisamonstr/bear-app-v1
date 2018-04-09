@@ -4,6 +4,7 @@ import {HeaderLayout} from '../../components'
 import {CatalogItem} from "../../components/catalog/catalog-item.component";
 import './catalog-styles.css'
 import { connect } from 'react-redux'
+import {fetchCatalogItems} from "../../actions/catalog-items.action";
 
 
 const mapStateToProps = (state) => {
@@ -11,16 +12,16 @@ const mapStateToProps = (state) => {
 }
 
  class Catalog extends Component {
+   componentDidMount () {
+     this.props.dispatch(fetchCatalogItems())
+   }
     render() {
 
         return (
             <HeaderLayout>
-                {this.props.match.params.url}
-                <h3>Каталог</h3>
                 <div className='catalog-wrapper'>
-                    { this.props.items.map(item => <CatalogItem item={item}/> )}
+                    { this.props.items.map(item => <CatalogItem item={item} key={item.id}/> )}
                 </div>
-                <Link to="/">главная</Link>
             </HeaderLayout>
 
         )

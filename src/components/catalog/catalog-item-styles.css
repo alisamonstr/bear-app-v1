@@ -1,0 +1,26 @@
+.catalog-item-image{
+    background-size: contain ;
+    width: 400px;
+    height: 450px;
+}
+.image-wrapper{
+    display: flex
+}
+.item-wrapper{
+    margin: 30px;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s all;
+    text-decoration: none;
+}
+.item-wrapper:hover{
+    background-color: beige;
+
+}
+.text-title{
+    font-weight: bold;
+}
+.text-price{
+    font-weight: normal;
+}

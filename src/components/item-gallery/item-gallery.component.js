@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import './item-gallery.styles.css'
 
 
-
 export  class ItemGallery extends Component {
     state ={
         selected:  0,
