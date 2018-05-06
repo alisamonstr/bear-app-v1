@@ -3,3 +3,6 @@
     flex-wrap: wrap;
     justify-content: center
 }
+.properties-column{
+    display: flex;
+}

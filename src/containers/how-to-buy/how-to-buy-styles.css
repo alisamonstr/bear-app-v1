@@ -1,0 +1,10 @@
+.formBox{
+    width: 60%;
+    background-color: white;
+    margin-left: 300px;
+    margin-top: -100px; ;
+    box-shadow: 2px 3px 20px rgba(0,0,0,0.5);
+    display: flex;
+    padding: 50px;
+    z-index: 500000;
+}

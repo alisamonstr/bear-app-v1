@@ -1,0 +1,15 @@
+.column{
+background-color: white;
+    border: 3px solid #F309F6;
+    width: 135px;
+    height: 200px;
+    margin: 30px;
+    padding: 10px;
+}
+.column-item{
+    padding-left: 7px;
+    padding-top: 10px;
+}
+.column{
+    align-items: flex-start
+}

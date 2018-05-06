@@ -8,11 +8,11 @@ export const HeaderLayout = ({ children, ...props }) => (
     <div {...props}>
         <div className='toolbar-parents' position="static">
             <Toolbar className="hat-header toolbar">
-                <Typography variant="title" color="inherit" >
+                <Typography className="bearforlove" variant="title" color="inherit" >
                     Bear for love
                 </Typography>
             </Toolbar>
-            <Toolbar className="menu-header toolbar" >
+            <Toolbar className={`menu-header toolbar ${props.navbarClassName}`} >
                 <NavigationButton to='/'> Главная </NavigationButton>
                 <NavigationButton to='/catalog/bears'> Мишки </NavigationButton>
                 <NavigationButton to='/catalog/toys'> Другие звери</NavigationButton>

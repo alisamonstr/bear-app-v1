@@ -20,8 +20,16 @@ const mapStateToProps = (state) => {
       }
         return (
             <HeaderLayout>
-                { item.title }
+              <div className='item-box'>
                 <ItemGallery images={item.images}/>
+                <div className='item-info-box'>
+                  <h1>{ item.title }</h1>
+                  <h3> { item.description } </h3>
+                  <div> Размер: {item.size} см.</div>
+                  <div>Цена: ₽{item.price} </div>
+                </div>
+
+              </div>
             </HeaderLayout>
         )
     }

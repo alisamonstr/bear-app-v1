@@ -4,22 +4,29 @@
     align-items: center;
 }
 .toolbar {
-    background: linear-gradient(45deg, #F8476D 30%, #FBC925 90%);
-    margin: 10px 10px;
+    background: linear-gradient(45deg, #E023E4 30%, #11F5F5 90%);
     color: white;
     min-height: 80% !important;
-    width: 90%;
+    width: 100%;
 
 }
 .hat-header{
-    height: 100px;
+    height: 175px;
+    background: url("https://sun1-2.userapi.com/c840538/v840538188/335ed/gSZVDeMNKgs.jpg");
+    background-position: 10% -55%;
 }
 .menu-header{
     height: 50px ;
 }
 
 .layout-wrapper {
-    background: #FFEBEE;
-    margin: 0 3.5%;
-    height: 95vh;
+    height: 100vh;
+}
+.bearforlove {
+    font-size: 60px !important;
+    font-weight: lighter;
+    padding: 70px;
+}
+.bigHeader{
+    padding-bottom: 200px;
 }

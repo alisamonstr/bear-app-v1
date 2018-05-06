@@ -8,11 +8,13 @@ import thunk from 'redux-thunk'
 import rootReducer from "./reducers"
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
+import './styles/index.css'
+import logger from 'redux-logger'
 
 const history = createHistory()
 const reduxRouterMiddleware = routerMiddleware(history)
 
-const store = createStore(rootReducer, applyMiddleware(thunk, reduxRouterMiddleware))
+const store = createStore(rootReducer, applyMiddleware(thunk, reduxRouterMiddleware, logger))
 
 render(
     <Provider store={store}>
