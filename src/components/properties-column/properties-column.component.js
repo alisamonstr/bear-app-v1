@@ -1,23 +1,34 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import './properties-column-styles.css'
-
-
+import { properties } from '../../reducers/catalog-items.reducer'
 
 
 export class PropertiesColumn extends React.Component {
-  render(){
-    const properties = [{from: 'Показать все', quantity: this.props.items.length},{from: 0, to: 15},{from: 16, to: 25},{from: 26, to: 35},{from: 36, to: 50},{from: 51, to:80}]
+  static propTypes = {
+    items: PropTypes.array,
+  }
+  render() {
     const itemsSizes = this.props.items.map(x => Number(x.size))
-    console.log(itemsSizes)
-    const propertiesWitsQuantity= properties.slice(1).map(x => x.quantity = itemsSizes.filter(item => x.from <= item  && item <= x.to ).length )
-    const sucsessfullProperties = [properties[0], ...propertiesWitsQuantity]
+    const propertiesWithQuantity = properties.map(x => ({
+      ...x,
+      quantity: x.to ? itemsSizes.filter(item => x.from <= item && item <= x.to).length : this.props.items.length,
+    }))
+    const from = Number(window.location.search.split('=')[1])
 
-
-    return(
-      <div className='column'>{
-        properties.map(prop => <div className='column-item'>{!prop.to ? prop.from : `${prop.from} - ${prop.to}`}({prop.quantity})</div>)
-      }</div>
+    return (
+      <div className="column">
+        {propertiesWithQuantity.map(prop => (
+          <Link
+            to={prop.to ? `?from=${prop.from}` : '#'}
+            key={prop.from}
+            className={`column-item ${from === prop.from ? 'active-column-item' : ''}`}
+          >2
+            {!prop.to ? prop.from : `${prop.from} - ${prop.to}`}({prop.quantity})
+          </Link>
+        ))}
+      </div>
     )
   }
-
 }

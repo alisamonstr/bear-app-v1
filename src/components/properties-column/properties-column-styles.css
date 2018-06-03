@@ -9,7 +9,12 @@ background-color: white;
 .column-item{
     padding-left: 7px;
     padding-top: 10px;
+    display: block;
+    color: #222222;
 }
 .column{
     align-items: flex-start
+}
+.active-column-item{
+    text-decoration: underline;
 }
