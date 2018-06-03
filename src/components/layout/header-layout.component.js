@@ -36,3 +36,4 @@ HeaderLayout.propTypes = {
   navbarClassName: PropTypes.string,
   className: PropTypes.string,
 }
+
