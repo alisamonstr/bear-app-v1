@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import Card, { CardContent, CardMedia } from 'material-ui/Card'
-import Typography from 'material-ui/Typography'
+import { Card, CardContent, CardMedia } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography'
 import './catalog-item-styles.css'
 
 export class CatalogItem extends React.Component {

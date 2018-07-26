@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import Input, { InputLabel } from 'material-ui/Input'
-import { FormControl } from 'material-ui/Form'
-import TextField from 'material-ui/TextField'
+import { InputLabel, FormControl } from '@material-ui/core'
+import TextField from '@material-ui/core/TextField'
 
 import { HeaderLayout } from '../../components'
 import './how-to-buy-styles.css'
@@ -45,43 +44,43 @@ export class HowToBuyContainer extends Component {
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">Your first name</InputLabel>
-              <Input id="name-simple" value={this.state.firstName} onChange={this.handleChange} />
+              <TextField id="name-simple" value={this.state.firstName} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">Your last name</InputLabel>
-              <Input id="name-simple" value={this.state.lastName} onChange={this.handleChange} />
+              <TextField id="name-simple" value={this.state.lastName} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">Country</InputLabel>
-              <Input id="name-simple" value={this.state.country} onChange={this.handleChange} />
+              <TextField id="name-simple" value={this.state.country} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">City</InputLabel>
-              <Input id="name-simple" value={this.state.city} onChange={this.handleChange} />
+              <TextField id="name-simple" value={this.state.city} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">Address</InputLabel>
-              <Input id="name-simple" value={this.state.address} onChange={this.handleChange} />
+              <TextField id="name-simple" value={this.state.address} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">Bear Name</InputLabel>
-              <Input id="name-simple" value={this.state.name} onChange={this.handleChange} />
+              <TextField id="name-simple" value={this.state.name} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">E-mail</InputLabel>
-              <Input id="name-simple" value={this.state.name} onChange={this.handleChange} />
+              <TextField id="name-simple" value={this.state.name} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
