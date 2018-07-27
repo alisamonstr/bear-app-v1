@@ -44,43 +44,43 @@ export class HowToBuyContainer extends Component {
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">Your first name</InputLabel>
-              <TextField id="name-simple" value={this.state.firstName} onChange={this.handleChange} />
+              <TextField className="name-simple" value={this.state.firstName} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">Your last name</InputLabel>
-              <TextField id="name-simple" value={this.state.lastName} onChange={this.handleChange} />
+              <TextField className="name-simple" value={this.state.lastName} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">Country</InputLabel>
-              <TextField id="name-simple" value={this.state.country} onChange={this.handleChange} />
+              <TextField className="name-simple" value={this.state.country} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">City</InputLabel>
-              <TextField id="name-simple" value={this.state.city} onChange={this.handleChange} />
+              <TextField className="name-simple" value={this.state.city} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">Address</InputLabel>
-              <TextField id="name-simple" value={this.state.address} onChange={this.handleChange} />
+              <TextField className="name-simple" value={this.state.address} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">Bear Name</InputLabel>
-              <TextField id="name-simple" value={this.state.name} onChange={this.handleChange} />
+              <TextField className="name-simple" value={this.state.name} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">
             <FormControl className="formControl">
               <InputLabel htmlFor="name-simple">E-mail</InputLabel>
-              <TextField id="name-simple" value={this.state.name} onChange={this.handleChange} />
+              <TextField className="name-simple" value={this.state.name} onChange={this.handleChange} />
             </FormControl>
           </div>
           <div className="formInputs">

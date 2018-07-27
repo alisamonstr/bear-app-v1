@@ -1,9 +1,9 @@
 .formBox{
     width: 50%;
-    height: 900px;
+    height: 800px;
     background-color: white;
-    margin-left: 400px;
-    margin-top: -100px; ;
+    margin-left: 300px;
+    margin-top: 100px; ;
     box-shadow: 2px 3px 20px rgba(0,0,0,0.5);
     display: flex;
     justify-content: flex-start;
@@ -21,7 +21,8 @@
 
 }
 .formControl {
-    margin: 20px;
+    margin: 500px;
+
 }
 .htbText{
     font-size: 18px;
@@ -31,4 +32,8 @@
 .FormColumns{
     display: flex;
     flex-direction: column;
+}
+
+.name-simple{
+    margin-top: 10px;
 }

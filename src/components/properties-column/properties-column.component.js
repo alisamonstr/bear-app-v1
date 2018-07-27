@@ -24,7 +24,7 @@ export class PropertiesColumn extends React.Component {
             to={prop.to ? `?from=${prop.from}` : '#'}
             key={prop.from}
             className={`column-item ${from === prop.from ? 'active-column-item' : ''}`}
-          >2
+          >
             {!prop.to ? prop.from : `${prop.from} - ${prop.to}`}({prop.quantity})
           </Link>
         ))}

@@ -15,8 +15,7 @@ const ToolbarParents = styled.div`
 
 const BigTolbar = styled(Toolbar)`
     color: white;
-    width: 100%;
-    height: 145px;
+    height: 115px;
     background: url("https://sun1-2.userapi.com/c840538/v840538188/335ed/gSZVDeMNKgs.jpg");
     background-position: 10% -55%;
     @media  (max-width: 1000px) {
@@ -39,8 +38,8 @@ background: linear-gradient(45deg, #E023E4 30%, #11F5F5 90%);
     min-height: 80% !important;
     width: 100%;
     position: static !important;
-    height: 50px ;
-    padding-top: 15px;
+    height: 40px ;
+    padding-top: 5px;
     
      @media  (max-width: 1000px) { 
     height: 100%;
@@ -61,17 +60,18 @@ background: linear-gradient(45deg, #E023E4 30%, #11F5F5 90%);
   
 `
 const CloseBtn = styled.a`
+    display: none;
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     color: white;
-    display: block;
     transition: 0.3s;
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-    @media (max-height: 1024px) {
+    @media (max-width: 1024px) {
+    display: block;
     font-size: 25px};
     &:hover{
     color: #f1f1f1;
@@ -99,7 +99,7 @@ const BearForLove = styled(Typography)`
     color: inherit;
     font-weight: lighter;
     padding: 20px;
-    font-size: 50px !important;
+    font-size: 40px !important;
     @media (max-width: 1024px) {
     font-size: 25px !important;};
   

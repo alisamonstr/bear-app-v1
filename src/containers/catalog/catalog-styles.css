@@ -1,7 +1,8 @@
 .catalog-wrapper{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center
+    justify-content: center;
+    align-items: flex-start
 }
 .properties-column{
     display: flex;

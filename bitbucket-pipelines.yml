@@ -8,4 +8,5 @@ pipelines:
             - yarn global add surge
             - yarn
             - yarn build
+            - cp build/index.html build/200.html
             - surge build bears-store.surge.sh
