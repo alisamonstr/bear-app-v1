@@ -1,8 +1,15 @@
-.button-header:hover {
-    background-color: rgba(255, 255, 255, 0.12) !important;
+.button:hover {
+     color:  white !important;
+
 }
-.button-header {
-    color: white !important;
+.button {
+    background: linear-gradient(45deg, #E023E4 30%, #11F5F5 90%) !important;
+    text-decoration: none;
+    color: #f1f1f1 !important;
+    display: block;
+    position: absolute;
+    font-size: 36px;
+    transition: 0.3s;
 }
 
 .active {

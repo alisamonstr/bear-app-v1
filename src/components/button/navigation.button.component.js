@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button'
-import './my-button.styles.css'
+import './navigation-button.styles.css'
 
 const getClasses = (to, router) => {
   if (router && router.location && to === router.location.pathname) {
