@@ -9,6 +9,9 @@ const Column = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 100px;
+    @media (max-width: 1000px){
+    margin-left: 20px;
+    }
 `
 const ImputField = styled(TextField)`
     display: block !important;
@@ -16,10 +19,50 @@ const ImputField = styled(TextField)`
 
 const OrderInfo = styled.div`
      display: flex;
+     @media (max-width: 1000px){
+     flex-direction: column;
+     }
 `
 
 const OrderButton = styled(MyButton)`
-margin-top: 50px;
+     margin-top: 50px;
+     @media (max-width: 1000px){
+     width: 150px;
+     margin-top: 20px !important;
+     }
+`
+const FormBox = styled.div`
+    width: 50%;
+    height: 800px;
+    background-color: white;
+    margin-left: 300px;
+    margin-top: -200px; 
+    box-shadow: 2px 3px 20px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 100px;
+    position: relative;
+    @media (max-width: 1000px){
+     width: 90vw;
+     margin-left: 10px;
+     margin-top: 30px; 
+     margin-bottom: 25px; 
+     height: 1100px;
+     padding: 10px;
+    }
+`
+const HowToBuyDescription = styled.div`
+    font-size: 18px;
+    line-height: 1.2;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-rightt: 10px;
+`
+const HowToBuy = styled.h1`
+   @media (max-width: 1000px){
+   margin-bottom: -10px;
+}
 `
 export class HowToBuyContainer extends Component {
   state = {
@@ -41,26 +84,19 @@ export class HowToBuyContainer extends Component {
   render() {
     return (
       <HeaderLayout navbarClassName="bigHeader">
-        <div className="formBox">
-          <h1> HOW TO BUY</h1>
-          <div className="htbText">
-            В 1902 году президент США Теодор Рузвельт пощадил на охоте американского чёрного медведя,
-            загнанного охотничьей командой с собаками, полузабитого и привязанного к дереву (иве).
-            Рузвельта пригласили отстрелить добычу. Он отказался сделать это сам, мотивируя тем,
-            что это «неспортивно», но распорядился медведя пристрелить, дабы прекратить его мучения.
-            История попала в газетные карикатуры,
-            но со временем была адаптирована по конъюнктурным соображениям,
-            и медведь превратился в маленького симпатичного медвежонка
-            (в карикатуре в «Вашингтон пост» от 16 ноября 1902 г.). Детали истории со временем размылись,
+        <FormBox>
+          <HowToBuy> HOW TO BUY</HowToBuy>
+          <HowToBuyDescription>
+            Детали истории со временем размылись,
             осталась главная — Тедди (прозвище Рузвельта) отказался стрелять в медвежонка.
             Одна из карикатур с уменьшенным до медвежонка масштабом попалась на глаза жене Морриса Мичтома,
             эмигранта из России (настоящее имя — Михаил Мишим[1]),
             владельца магазина игрушек. Она и сшила первого медвежонка,
             похожего на медведя из карикатуры.
             Он был установлен на витрине магазина и назван «Медвежонок Тедди», в честь президента Рузвельта.
-          </div>
+          </HowToBuyDescription>
           <OrderInfo>
-            <Column className="firstColumn">
+            <Column>
               <ImputField
                 label="First Name"
                 autoComplete="current-password"
@@ -126,7 +162,7 @@ export class HowToBuyContainer extends Component {
               <OrderButton> Заказать </OrderButton>
             </Column>
           </OrderInfo>
-        </div>
+        </FormBox>
       </HeaderLayout>
     )
   }

@@ -15,11 +15,14 @@ const ToolbarParents = styled.div`
 
 const BigTolbar = styled(Toolbar)`
     color: white;
+    width: 100%;
     height: 115px;
+    padding: 0 !important;
     background: url("https://sun1-2.userapi.com/c840538/v840538188/335ed/gSZVDeMNKgs.jpg");
     background-position: 10% -55%;
     @media  (max-width: 1000px) {
     height: 80px;
+    padding: 0 !important;
     background: linear-gradient(45deg, #E023E4 30%, #11F5F5 90%);};
 `
 const OpenIcon = styled.span`
@@ -38,8 +41,8 @@ background: linear-gradient(45deg, #E023E4 30%, #11F5F5 90%);
     min-height: 80% !important;
     width: 100%;
     position: static !important;
-    height: 40px ;
-    padding-top: 5px;
+    height: 50px ;
+    padding-top: 15px;
     
      @media  (max-width: 1000px) { 
     height: 100%;
@@ -109,7 +112,7 @@ export class HeaderLayout extends React.Component {
     open: false,
   };
   render() {
-    const { children, className } = this.props
+    const { children, className, navbarClassName } = this.props
     return (
       <div className={className}>
         <ToolbarParents>
@@ -122,7 +125,7 @@ export class HeaderLayout extends React.Component {
               Bear for love
             </BearForLove>
           </BigTolbar>
-          <SlideNavigation isOpen={this.state.open}>
+          <SlideNavigation className={navbarClassName} isOpen={this.state.open}>
             <CloseBtn
               onClick={() => this.setState({ open: false })}
             >&times;
@@ -148,5 +151,6 @@ HeaderLayout.propTypes = {
     PropTypes.node,
   ]),
   className: PropTypes.string,
+  navbarClassName: PropTypes.string,
 }
 

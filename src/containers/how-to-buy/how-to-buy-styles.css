@@ -3,7 +3,7 @@
     height: 800px;
     background-color: white;
     margin-left: 300px;
-    margin-top: 100px; ;
+    margin-top: -100px; ;
     box-shadow: 2px 3px 20px rgba(0,0,0,0.5);
     display: flex;
     justify-content: flex-start;
@@ -11,15 +11,7 @@
     padding: 100px;
     position: relative;
 }
-.formLine{
-    height: 2px;
-    width: 80%;
-    background-color: silver;
-    margin: 30px 0 40px 70px;
-    display: flex;
-    justify-content: flex-start;
 
-}
 .formControl {
     margin: 500px;
 
