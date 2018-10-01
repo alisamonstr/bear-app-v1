@@ -6,7 +6,6 @@ import './properties-column-styles.css'
 import { properties } from '../../reducers/catalog-items.reducer'
 
 
-
 const Column = styled.div`
     background-color: white;
     border: 3px solid #F309F6;

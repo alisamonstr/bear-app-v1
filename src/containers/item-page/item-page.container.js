@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { HeaderLayout } from '../../components'
 import './item-page-styles.css'
 import { ItemGallery } from '../../components/item-gallery/item-gallery.component'
 import { fetchCatalogItems } from '../../actions/catalog-items.action'
@@ -56,18 +55,18 @@ class ItemPage extends Component {
       return <div>Загрузка...</div>
     }
     return (
-      <HeaderLayout>
-        <ItemBox>
-          <ItemGallery images={item.images} />
-          <ItemInfoBox >
-            <Title>{ item.title }</Title>
-            <h3> { item.description } </h3>
-            <div> Размер: {item.size} см.</div>
-            <div>Цена: ₽{item.price} </div>
-          </ItemInfoBox >
 
-        </ItemBox>
-      </HeaderLayout>
+      <ItemBox>
+        <ItemGallery images={item.images} />
+        <ItemInfoBox >
+          <Title>{ item.title }</Title>
+          <h3> { item.description } </h3>
+          <div> Размер: {item.size} см.</div>
+          <div>Цена: ₽{item.price} </div>
+        </ItemInfoBox >
+
+      </ItemBox>
+
     )
   }
 }

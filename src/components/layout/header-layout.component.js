@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import './layout-styles.css'
-import { NavigationButton } from '../button'
+import {NavigationButton} from '../button'
 
 const ToolbarParents = styled.div`
 @media  (max-width: 1000px) {
@@ -36,29 +36,31 @@ const OpenIcon = styled.span`
     }
 `
 const SlideNavigation = styled.div`
-background: linear-gradient(45deg, #E023E4 30%, #11F5F5 90%);
-    color: white;
-    min-height: 80% !important;
+    background: linear-gradient(45deg, #E023E4 30%, #11F5F5 90%);
+    color: white;  
     width: 100%;
     position: static !important;
-    height: 50px ;
+    height: ${p => p.height}px;
     padding-top: 15px;
-    
-     @media  (max-width: 1000px) { 
-    height: 100%;
-    width: ${props => props.isOpen ? '100%' : '0%'};
-    position: fixed !important;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background: linear-gradient(#E023E4 30%, #11F5F5 90%);
-    overflow-x: hidden;
-    transition: 0.5s;
-    text-align:center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 15px;
+    transition: all 0.5s;
+    &.bigHeader{
+      height: 250px;
+    }
+    @media  (max-width: 1000px) { 
+      height: 100vh !important;
+      width: ${props => props.isOpen ? '100%' : '0%'};
+      position: fixed !important;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background: linear-gradient(#E023E4 30%, #11F5F5 90%);
+      overflow-x: hidden;
+      transition: 0.5s;
+      text-align:center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 15px;
     }
   
 `
@@ -102,32 +104,60 @@ const BearForLove = styled(Typography)`
     color: inherit;
     font-weight: lighter;
     padding: 20px;
+    
     font-size: 40px !important;
     @media (max-width: 1024px) {
     font-size: 25px !important;};
   
 `
+
+
 export class HeaderLayout extends React.Component {
   state = {
     open: false,
+    height: window.location.pathname === '/how-to-buy' ? 300 : 50,
   };
+
+  componentDidMount() {
+    this.mql = window.matchMedia('(min-width: 801px)')
+    this.mql.addListener(this.handleMediaQueryChanged)
+
+    this.props.history.listen(() => {
+      this.setState({
+        height: window.location.pathname === '/how-to-buy' ? 300 : 50,
+        open: false,
+      })
+    })
+  }
+
+  componentWillUnmount() {
+    if (this.mql) {
+      this.mql.removeListener(this.handleMediaQueryChanged)
+    }
+  }
+
+  handleMediaQueryChanged = () => {
+    this.setState({open: false})
+    console.log(1)
+  }
+
   render() {
-    const { children, className, navbarClassName } = this.props
+    const {children, className} = this.props
     return (
       <div className={className}>
         <ToolbarParents>
           <BigTolbar>
             <OpenIcon
-              onClick={() => this.setState({ open: true })}
+              onClick={() => this.setState({open: true})}
             >&#9776;
             </OpenIcon>
-            <BearForLove className="bearforlove" variant="title" color="inherit" >
+            <BearForLove className="bearforlove" variant="title" color="inherit">
               Bear for love
             </BearForLove>
           </BigTolbar>
-          <SlideNavigation className={navbarClassName} isOpen={this.state.open}>
+          <SlideNavigation height={this.state.height} isOpen={this.state.open}>
             <CloseBtn
-              onClick={() => this.setState({ open: false })}
+              onClick={() => this.setState({open: false})}
             >&times;
             </CloseBtn>
             <NavBtn to="/"> Главная </NavBtn>
@@ -145,12 +175,13 @@ export class HeaderLayout extends React.Component {
     )
   }
 }
+
 HeaderLayout.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
   className: PropTypes.string,
-  navbarClassName: PropTypes.string,
+  history: PropTypes.object.isRequired,
 }
 

@@ -11,11 +11,11 @@ const ItemImage = styled(CardMedia)`
     width: 350px;
     height: 400px;
      @media  (max-width: 1000px) {
-     width: 350px;
-    height: 400px;
+     max-width: calc(100vw - 30px);
+    height: 370px;
      }
 `
-const ItemWrapper = styled(Link) `
+const ItemWrapper = styled(Link)`
   margin: 30px;
   background-color: white;
   border-radius: 5px;
@@ -24,7 +24,7 @@ const ItemWrapper = styled(Link) `
   text-decoration: none;
    @media  (max-width: 1000px) {
    margin: 15px;
-   margin-top:30px;
+   margin-top:20px;
    }
    &:hover{
      background-color: beige;
@@ -36,6 +36,9 @@ font-weight: bold;
 font-size: 25px;
 }
 `
+const ContentCard = styled(CardContent)`
+margin: -10px 0
+`
 export class CatalogItem extends React.Component {
   static propTypes = {
     item: PropTypes.object,
@@ -46,23 +49,23 @@ export class CatalogItem extends React.Component {
     return (
       <ItemWrapper to={`${url}/${itemUrl}`}>
         <Card>
-          <CardContent>
+          <ContentCard>
             <Typography variant="headline" component="h2">
               <TextTitle>{this.props.item.title}</TextTitle>
             </Typography>
             <Typography color="textSecondary" variant="subheading" component="h2" >
                           Размер:   {this.props.item.sizeDetail} см
             </Typography>
-          </CardContent>
+          </ContentCard>
           <ItemImage
             image={this.props.item.images[0]}
             title={this.props.item.title}
           />
-          <CardContent>
+          <ContentCard>
             <Typography variant="headline" align="right" component="h3">
               <div className="text-price"> Цена: ₽{this.props.item.price} </div>
             </Typography>
-          </CardContent>
+          </ContentCard>
         </Card>
       </ItemWrapper>
     )
