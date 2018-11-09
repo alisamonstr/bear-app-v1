@@ -91,6 +91,7 @@ export class Login extends Component {
                       label="Password"
                       autoComplete="password"
                       margin="normal"
+                      type="password"
                     />
                   </div>
                 )}
