@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import './layout-styles.css'
-import {NavigationButton} from '../button'
+import { NavigationButton } from '../button'
 
 const ToolbarParents = styled.div`
 @media  (max-width: 1000px) {
@@ -137,18 +137,18 @@ export class HeaderLayout extends React.Component {
   }
 
   handleMediaQueryChanged = () => {
-    this.setState({open: false})
+    this.setState({ open: false })
     console.log(1)
   }
 
   render() {
-    const {children, className} = this.props
+    const { children, className } = this.props
     return (
       <div className={className}>
         <ToolbarParents>
           <BigTolbar>
             <OpenIcon
-              onClick={() => this.setState({open: true})}
+              onClick={() => this.setState({ open: true })}
             >&#9776;
             </OpenIcon>
             <BearForLove className="bearforlove" variant="title" color="inherit">
@@ -157,7 +157,7 @@ export class HeaderLayout extends React.Component {
           </BigTolbar>
           <SlideNavigation height={this.state.height} isOpen={this.state.open}>
             <CloseBtn
-              onClick={() => this.setState({open: false})}
+              onClick={() => this.setState({ open: false })}
             >&times;
             </CloseBtn>
             <NavBtn to="/"> Главная </NavBtn>

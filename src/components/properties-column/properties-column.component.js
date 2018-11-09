@@ -2,16 +2,16 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Paper from '@material-ui/core/Paper'
+import MenuItem from '@material-ui/core/MenuItem'
 import './properties-column-styles.css'
 import { properties } from '../../reducers/catalog-items.reducer'
 
 
-const Column = styled.div`
-    background-color: white;
-    border: 3px solid #F309F6;
-    width: 125px;
-    height: 190px;
-    margin: 30px;
+const Column = styled(Paper)`
+    width: 145px;
+    height: 210px;
+    margin: 20px;
     padding: 10px;
     @media  (max-width: 1000px) { 
     display: none;
@@ -22,10 +22,16 @@ const Column = styled.div`
     padding: 0;
     }
 `
+const Item = styled(MenuItem)`
+height: 10px !important;
+`
+
 export class PropertiesColumn extends React.Component {
   static propTypes = {
     items: PropTypes.array,
   }
+
+
   render() {
     const itemsSizes = this.props.items.map(x => Number(x.size))
     const propertiesWithQuantity = properties.map(x => ({
@@ -37,13 +43,15 @@ export class PropertiesColumn extends React.Component {
     return (
       <Column>
         {propertiesWithQuantity.map(prop => (
-          <Link
-            to={prop.to ? `?from=${prop.from}` : '#'}
-            key={prop.from}
-            className={`column-item ${from === prop.from ? 'active-column-item' : ''}`}
-          >
-            {!prop.to ? prop.from : `${prop.from} - ${prop.to}`}({prop.quantity})
-          </Link>
+          <Item className={`column-item ${from === prop.from ? 'active-column-item' : ''}`}>
+            <Link
+              to={prop.to ? `?from=${prop.from}` : '#'}
+              key={prop.from}
+              className="link-color"
+            >
+              {!prop.to ? prop.from : `${prop.from} - ${prop.to}`}   ({prop.quantity})
+            </Link>
+          </Item>
         ))}
       </Column>
     )

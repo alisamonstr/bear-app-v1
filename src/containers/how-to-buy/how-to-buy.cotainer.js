@@ -12,7 +12,7 @@ const Column = styled.div`
     margin-left: 20px;
     }
 `
-const ImputField = styled(TextField)`
+const InputField = styled(TextField)`
     display: block !important;
 `
 
@@ -103,35 +103,35 @@ export class HowToBuyContainer extends Component {
         </HowToBuyDescription>
         <OrderInfo>
           <Column>
-            <ImputField
+            <InputField
               label="First Name"
               autoComplete="current-password"
               margin="normal"
               value={this.state.firstName}
               onChange={this.handleChange}
             />
-            <ImputField
+            <InputField
               label="Last Name"
               autoComplete="current-password"
               margin="normal"
               value={this.state.lastName}
               onChange={this.handleChange}
             />
-            <ImputField
+            <InputField
               label="Country"
               autoComplete="current-password"
               margin="normal"
               value={this.state.country}
               onChange={this.handleChange}
             />
-            <ImputField
+            <InputField
               label="City"
               autoComplete="current-password"
               margin="normal"
               value={this.state.city}
               onChange={this.handleChange}
             />
-            <ImputField
+            <InputField
               label="Address"
               autoComplete="current-password"
               margin="normal"
@@ -141,21 +141,21 @@ export class HowToBuyContainer extends Component {
           </Column>
 
           <Column>
-            <ImputField
+            <InputField
               label="Bear Name"
               autoComplete="current-password"
               margin="normal"
               value={this.state.bearName}
               onChange={this.handleChange}
             />
-            <ImputField
+            <InputField
               label="E-mail"
               autoComplete="current-password"
               margin="normal"
               value={this.state.email}
               onChange={this.handleChange}
             />
-            <ImputField
+            <InputField
               id="multiline-static"
               label="Comments"
               multiline

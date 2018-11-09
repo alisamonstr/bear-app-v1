@@ -7,14 +7,15 @@ background-color: white;
     padding: 10px;
 }
 .column-item{
-    padding-left: 7px;
-    padding-top: 7px;
     display: block;
-    color: #222222;
 }
 .column{
     align-items: flex-start
 }
 .active-column-item{
-    text-decoration: underline;
+    background: linear-gradient(45deg, #7589F9 30%, #11F5F5 90%);
+    color: white !important;
+}
+.link-color{
+    color:black;
 }
