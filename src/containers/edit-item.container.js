@@ -2,9 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import TextField from '@material-ui/core/TextField'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
+import MenuItem from '@material-ui/core/MenuItem'
+import Select from '@material-ui/core/Select'
+import { Field, Form } from 'react-final-form'
 import './index'
 import { ItemGallery } from '../components'
-import { fetchCatalogItems } from '../actions/catalog-items.action'
+import { fetchCatalogItems, editItem } from '../actions/catalog-items.action'
+import { MyButton } from '../components/button'
+
 
 const ItemBox = styled.div`
   width: 80%;
@@ -25,18 +33,28 @@ const ItemBox = styled.div`
 const ItemInfoBox = styled.div`
   display: flex;
   justify-content: flex-start;
-  margin-left: 300px;
+  margin-left: 150px;
   flex-direction: column;
    @media (max-width: 1000px){
    margin-left: 10px;
    padding-bottom: 15px;
    }
 `
-const Title = styled.h1`
- @media (max-width: 1000px){
- font-size: 25px;
- padding-bottom: 5px;
- }
+
+const InputField = styled(TextField)`
+    margin-bottom: 20px !important;
+    width: 200px
+`
+const BigInputField = styled(TextField)`
+    margin-bottom: 20px !important;
+    width: 400px ;
+`
+const OrderButton = styled(MyButton)`
+     margin-top: 45px !important;
+    width: 100px;
+`
+const StyledFormControl = styled(FormControl)`
+width: 100px;
 `
 const mapStateToProps = state => ({ items: state.catalogItems.items })
 
@@ -46,11 +64,48 @@ class EditItem extends Component {
     match: PropTypes.object,
     dispatch: PropTypes.func,
   }
+  state = {
+    open: false,
+  }
+
   componentDidMount() {
     this.props.dispatch(fetchCatalogItems())
   }
+
+  onSubmit = (values) => {
+    this.props.dispatch(editItem(values)).catch(() => console.log('error'))
+  }
+  validate = (values) => {
+    const errors = {}
+    if (!values.title) {
+      errors.title = 'Required'
+    }
+    if (!values.description) {
+      errors.description = 'Required'
+    }
+    if (!values.size) {
+      errors.size = 'Required'
+    }
+    if (!values.price) {
+      errors.price = 'Required'
+    }
+    return errors
+  }
+
+  handleClose = () => {
+    this.setState({ open: false })
+  }
+
+  handleOpen = () => {
+    this.setState({ open: true })
+  }
+  categories = () => {
+    const y = this.props.items.map(x => x.category)
+    return [...new Set(y)]
+  }
+
   render() {
-    console.log(this.props.match.params.itemUrl)
+    console.log(this.categories())
     const item = this.props.items.find(i => String(i.id) === this.props.match.params.itemUrl)
     if (!item) {
       return <div>Загрузка...</div>
@@ -59,13 +114,107 @@ class EditItem extends Component {
 
       <ItemBox>
         <ItemGallery images={item.images} />
-        <ItemInfoBox >
-          <Title>{ item.title }</Title>
-          <h3> { item.description } </h3>
-          <div> Размер: {item.size} см.</div>
-          <div>Цена: ₽{item.price} </div>
-        </ItemInfoBox >
+        <Form
+          onSubmit={this.onSubmit}
+          validate={this.validate}
+          initialValues={item}
 
+        >
+          {({ handleSubmit }) => (
+            <ItemInfoBox>
+              <form onSubmit={handleSubmit}>
+                <Field name="title">
+                  {({ input, meta }) => (
+                    <div>
+                      <InputField
+                        {...input}
+                        helperText={meta.touched ? meta.error : undefined}
+                        error={meta.error && meta.touched}
+                        label="Имя"
+                        autoComplete="title"
+                        className="edit"
+                        type="text"
+                      />
+                    </div>
+                  )}
+                </Field>
+                <Field name="description">
+                  {({ input, meta }) => (
+                    <div>
+                      <BigInputField
+                        {...input}
+                        helperText={meta.touched ? meta.error : undefined}
+                        error={meta.error && meta.touched}
+                        id="standard-multiline-flexible"
+                        label="Multiline"
+                        multiline
+                        rowsMax="10"
+                        rows={4}
+                        className="textField"
+                        autoComplete="description"
+                        type="text"
+                      />
+                    </div>
+                  )}
+                </Field>
+                <Field name="size">
+                  {({ input, meta }) => (
+                    <div>
+                      <InputField
+                        {...input}
+                        helperText={meta.touched ? meta.error : undefined}
+                        error={meta.error && meta.touched}
+                        label="Размер"
+                        className="edit"
+                        autoComplete="size"
+                        type="text"
+                      /> см.
+                    </div>
+                  )}
+                </Field>
+                <Field name="price">
+                  {({ input, meta }) => (
+                    <div>
+                      <InputField
+                        {...input}
+                        helperText={meta.touched ? meta.error : undefined}
+                        error={meta.error && meta.touched}
+                        label="Цена"
+                        className="edit"
+                        autoComplete="price"
+                        type="text"
+                      />
+                    </div>
+                  )}
+                </Field>
+                <Field name="category">
+                  {({ input }) => (
+                    <div>
+                      <StyledFormControl>
+
+                        <InputLabel htmlFor="demo-controlled-open-select">Category</InputLabel>
+                        <Select
+                          {...input}
+                          open={this.state.open}
+                          onClose={this.handleClose}
+                          onOpen={this.handleOpen}
+                        >
+                          <MenuItem value="bears">Bears</MenuItem>
+                          <MenuItem value="toys">Toys</MenuItem>
+                          <MenuItem value="others">Others</MenuItem>
+                        </Select>
+                      </StyledFormControl>
+
+                    </div>
+                  )}
+                </Field>
+                <OrderButton type="submit">
+                  <div> сохранить</div>
+                </OrderButton>
+              </form>
+            </ItemInfoBox>
+          )}
+        </Form>
       </ItemBox>
 
     )

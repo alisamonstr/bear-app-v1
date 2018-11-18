@@ -1,4 +1,5 @@
 import { push } from 'react-router-redux'
+import { link } from '../config'
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
@@ -6,7 +7,7 @@ export const LOGOUT = 'LOGOUT'
 
 
 export const login = (email, password) => (dispatch) => {
-  fetch('https://hzc02srkq7.execute-api.eu-central-1.amazonaws.com/prod/login', {
+  fetch(`${link}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

@@ -17,21 +17,21 @@ class Catalog extends Component {
     dispatch: PropTypes.func,
     items: PropTypes.array,
     filteredItems: PropTypes.array,
+    match: PropTypes.any,
   }
+
   componentDidMount() {
     this.props.dispatch(fetchCatalogItems())
   }
-
   render() {
     return (
-
       <div className="properties-column">
         <PropertiesColumn items={this.props.items} />
         <div className="catalog-wrapper">
-          {this.props.filteredItems.map(item => <CatalogItem item={item} key={item.id} />)}
+          {this.props.filteredItems.filter(i => i.category === this.props.match.params.url)
+            .map(item => <CatalogItem item={item} key={item.id} />)}
         </div>
       </div>
-
 
     )
   }

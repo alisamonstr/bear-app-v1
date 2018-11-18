@@ -41,6 +41,7 @@ export class ItemGallery extends Component {
           <div className="item-gallery-images">
             {this.props.images.map((url, i) =>
                 (<ItemGalleryImage
+                  key={url}
                   style={{ background: `url('${url}')  no-repeat 100%`, border: this.state.selected === i ? '1px solid red' : '' }}
                   onClick={() => this.setState({ selected: i })}
                 />))
