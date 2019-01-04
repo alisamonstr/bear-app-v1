@@ -10,9 +10,9 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
-import { MyButton } from '../../components/button'
+import { MyButton, DeleteWindow } from '../../components'
 import { logOut } from '../../actions'
-import { fetchCatalogItems } from '../../actions/catalog-items.action'
+import { deleteItem, fetchCatalogItems } from '../../actions/catalog-items.action'
 
 const CardWrapper = styled.div`
    display: flex;
@@ -31,6 +31,12 @@ const CardWrapper = styled.div`
 const OrderButton = styled(MyButton)`
    margin-top: 45px !important;
    width: 100px;
+`
+const DeleteButton = styled(MyButton)`
+&.button {
+   background: linear-gradient(45deg, #f12711 30%, #f5af19 90%) !important;
+   width: 30px;
+   }
 `
 const StyledPaper = styled(Paper)`
   width: 100%;
@@ -55,6 +61,10 @@ export class Admin extends Component {
     items: PropTypes.array,
 
   }
+  state = {
+    delete: false,
+    itemId: 0,
+  }
 
   componentDidMount() {
     this.props.dispatch(fetchCatalogItems())
@@ -63,15 +73,22 @@ export class Admin extends Component {
     }
   }
 
+  onClose = () => {
+    this.setState({ delete: false })
+  }
+  onRemove = () => {
+    this.props.dispatch(deleteItem({ id: this.state.itemId })).catch(() => console.log('olala'))
+    this.onClose()
+  }
   loginOut = () => {
     this.props.dispatch(logOut())
   }
 
   render() {
+    console.log(this.props.items)
     return (
       <CardWrapper>
         <h1>hello</h1>
-
         <StyledPaper>
           <StyledTable>
             <TableHead>
@@ -81,6 +98,7 @@ export class Admin extends Component {
                 <TableCell numeric>Price</TableCell>
                 <TableCell numeric>Description</TableCell>
                 <TableCell numeric>Image</TableCell>
+                <TableCell numeric>Delete</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -96,14 +114,22 @@ export class Admin extends Component {
                   <TableCell numeric><StyledLink to={`/edit/${item.id}`}> {item.description} </StyledLink></TableCell>
                   <TableCell numeric>
                     <StyledLink to={`/edit/${item.id}`}>
-                      <div style={{
-                        background: `url('${item.images[0]}') no-repeat 100%`,
-                        width: '125px',
-                        height: '125px',
-                        backgroundSize: 'contain',
-                      }}
-                      />
+                      {item.images && item.images.length > 0 ?
+                        <div style={{
+                          background: `url('${item.images[0]}') no-repeat 100%`,
+                          width: '125px',
+                          height: '125px',
+                          backgroundSize: 'contain',
+                        }}
+                        />
+                        : 'no images'
+                      }
                     </StyledLink>
+                  </TableCell>
+                  <TableCell numeric>
+                    <DeleteButton onClick={() => this.setState({ delete: true, itemId: item.id })}>
+                      <div> X</div>
+                    </DeleteButton>
                   </TableCell>
                 </TableRow>
               ))}
@@ -114,6 +140,11 @@ export class Admin extends Component {
         <OrderButton onClick={this.loginOut}>
           <div>goodbye</div>
         </OrderButton>
+        <DeleteWindow
+          delete={this.state.delete}
+          onClose={this.onClose}
+          onRemove={this.onRemove}
+        />
       </CardWrapper>
     )
   }

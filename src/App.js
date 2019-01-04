@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router'
 import PropTypes from 'prop-types'
 import { ConnectedRouter } from 'react-router-redux'
 import './styles/App.css'
-import { MainContainer, CatalogContainer, HowToBuyContainer, ItemPageContainer, LoginContainer, AdminContainer, EditItemContainer } from './containers'
+import { MainContainer, CatalogContainer, HowToBuyContainer, ItemPageContainer, LoginContainer, AdminContainer, EditItemContainer, AddItemContainer } from './containers'
 import { HeaderLayout } from './components'
 
 class App extends Component {
@@ -23,6 +23,7 @@ class App extends Component {
             <Route exact path="/edit/:itemUrl" component={EditItemContainer} />
             <Route exact path="/login" component={LoginContainer} />
             <Route exact path="/admin" component={AdminContainer} />
+            <Route exact path="/add" component={AddItemContainer} />
           </Switch>
         </HeaderLayout>
       </ConnectedRouter>

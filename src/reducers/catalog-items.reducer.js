@@ -1,5 +1,5 @@
 import { LOCATION_CHANGE } from 'react-router-redux'
-import { RECEIVE_CATALOG_DATA, EDIT_CATALOG_ITEM } from '../actions'
+import { RECEIVE_CATALOG_DATA, EDIT_CATALOG_ITEM, DELETE_CATALOG_ITEM, ADD_CATALOG_ITEM } from '../actions'
 
 
 export const properties = [
@@ -32,6 +32,12 @@ export default function (state = itemsDefaultState, action) {
     case EDIT_CATALOG_ITEM: {
       const newItems = state.items.map(item => item.id === action.payload.id ? action.payload : item)
       return { ...state, items: newItems }
+    }
+    case DELETE_CATALOG_ITEM: {
+      return { items: action.payload }
+    }
+    case ADD_CATALOG_ITEM: {
+      return { ...state, items: action.payload.id }
     }
     default:
       return state

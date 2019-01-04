@@ -12,6 +12,7 @@ import './index'
 import { ItemGallery } from '../components'
 import { fetchCatalogItems, editItem } from '../actions/catalog-items.action'
 import { MyButton } from '../components/button'
+import { SimpleSnackbar } from '../components/error.component'
 
 
 const ItemBox = styled.div`
@@ -66,6 +67,7 @@ class EditItem extends Component {
   }
   state = {
     open: false,
+    error: false,
   }
 
   componentDidMount() {
@@ -73,7 +75,7 @@ class EditItem extends Component {
   }
 
   onSubmit = (values) => {
-    this.props.dispatch(editItem(values)).catch(() => console.log('error'))
+    this.props.dispatch(editItem(values)).catch(() => this.setState({ error: true }))
   }
   validate = (values) => {
     const errors = {}
@@ -91,7 +93,9 @@ class EditItem extends Component {
     }
     return errors
   }
-
+  handleError = () => {
+    this.setState({ error: false })
+  }
   handleClose = () => {
     this.setState({ open: false })
   }
@@ -208,6 +212,7 @@ class EditItem extends Component {
                     </div>
                   )}
                 </Field>
+
                 <OrderButton type="submit">
                   <div> сохранить</div>
                 </OrderButton>
@@ -215,6 +220,8 @@ class EditItem extends Component {
             </ItemInfoBox>
           )}
         </Form>
+        <SimpleSnackbar handleError={this.handleError} error={this.state.error} />
+
       </ItemBox>
 
     )
