@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -8,6 +10,8 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import { Field, Form } from 'react-final-form'
+import { FieldArray } from 'react-final-form-arrays'
+import arrayMutators from 'final-form-arrays'
 import './index'
 import { ItemGallery } from '../components'
 import { fetchCatalogItems, editItem } from '../actions/catalog-items.action'
@@ -122,9 +126,12 @@ class EditItem extends Component {
           onSubmit={this.onSubmit}
           validate={this.validate}
           initialValues={item}
+          mutators={{
+            ...arrayMutators,
+          }}
 
         >
-          {({ handleSubmit }) => (
+          {({ handleSubmit, mutators: { push, pop } }) => (
             <ItemInfoBox>
               <form onSubmit={handleSubmit}>
                 <Field name="title">
@@ -212,7 +219,39 @@ class EditItem extends Component {
                     </div>
                   )}
                 </Field>
-
+                <div>
+                  <div className="buttons">
+                    <button type="button" onClick={() => push('images', '')}>
+                      Add Image
+                    </button>
+                    <button type="button" onClick={() => pop('images')}>
+                      Remove Image
+                    </button>
+                  </div>
+                  <FieldArray name="images">
+                    {({ fields, value }) =>
+                      fields.map((name, index) => (
+                        <div key={name}>
+                          <img src={value ? value[index] : ''} />
+                          <Field name={name}>
+                            {({ input }) => (
+                              <div>
+                                <div>Image. #{index + 1} url</div>
+                                <input type="text" {...input} placeholder="url" />
+                                <div
+                                  onClick={() => fields.remove(index)}
+                                  style={{ cursor: 'pointer' }}
+                                >
+                                  X
+                                </div>
+                              </div>
+                            )}
+                          </Field>
+                        </div>
+                      ))
+                    }
+                  </FieldArray>
+                </div>
                 <OrderButton type="submit">
                   <div> сохранить</div>
                 </OrderButton>

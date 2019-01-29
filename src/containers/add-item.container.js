@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -14,7 +16,6 @@ import './index'
 import { fetchCatalogItems, addItem } from '../actions/catalog-items.action'
 import { MyButton } from '../components/button'
 import { SimpleSnackbar } from '../components/error.component'
-
 
 const ItemBox = styled.div`
   width: 80%;
@@ -52,12 +53,27 @@ const BigInputField = styled(TextField)`
     width: 400px ;
 `
 const OrderButton = styled(MyButton)`
-     margin-top: 45px !important;
+    margin-top: 45px !important;
     width: 100px;
 `
 const StyledFormControl = styled(FormControl)`
-width: 100px;
+width: 150px;
 `
+const StyledImagesButtons = styled.div`
+    margin-top: 20px
+`
+const ImagesButton = styled(MyButton)`
+&.button {
+    background: linear-gradient(45deg, #FFFFFF 30%, #F2F3FC 90%) !important;
+    border: solid 0.5px black !important;
+    margin-top: 45px !important;
+    width: 120px;
+    font-size: 16px;
+    color: black !important;
+    margin-right: 20px;
+    }
+`
+
 const mapStateToProps = state => ({ items: state.catalogItems.items })
 
 class AddItem extends Component {
@@ -122,160 +138,138 @@ class AddItem extends Component {
           }}
 
         >
-          {({
-              handleSubmit,
-              mutators: { push, pop },
-              pristine,
-              reset,
-              submitting,
-              values,
-            }) =>
-            (
-              <ItemInfoBox>
-                <form onSubmit={handleSubmit}>
-                  <Field name="title">
-                    {({ input, meta }) => (
-                      <div>
-                        <InputField
-                          {...input}
-                          helperText={meta.touched ? meta.error : undefined}
-                          error={meta.error && meta.touched}
-                          label="Имя"
-                          autoComplete="title"
-                          className="edit"
-                          type="text"
-                        />
-                      </div>
-                    )}
-                  </Field>
-                  <Field name="description">
-                    {({ input, meta }) => (
-                      <div>
-                        <BigInputField
-                          {...input}
-                          helperText={meta.touched ? meta.error : undefined}
-                          error={meta.error && meta.touched}
-                          id="standard-multiline-flexible"
-                          label="Описание"
-                          multiline
-                          rowsMax="10"
-                          rows={4}
-                          className="textField"
-                          autoComplete="description"
-                          type="text"
-                        />
-                      </div>
-                    )}
-                  </Field>
-                  <Field name="size">
-                    {({ input, meta }) => (
-                      <div>
-                        <InputField
-                          {...input}
-                          helperText={meta.touched ? meta.error : undefined}
-                          error={meta.error && meta.touched}
-                          label="Размер"
-                          className="edit"
-                          autoComplete="size"
-                          type="text"
-                        /> см.
-                      </div>
-                    )}
-                  </Field>
-                  <Field name="price">
-                    {({ input, meta }) => (
-                      <div>
-                        <InputField
-                          {...input}
-                          helperText={meta.touched ? meta.error : undefined}
-                          error={meta.error && meta.touched}
-                          label="Цена"
-                          className="edit"
-                          autoComplete="price"
-                          type="text"
-                        />
-                      </div>
-                    )}
-                  </Field>
-                  <Field name="category">
-                    {({ input }) => (
-                      <div>
-                        <StyledFormControl>
-
-                          <InputLabel htmlFor="demo-controlled-open-select">Category</InputLabel>
-                          <Select
-                            {...input}
-                            open={this.state.open}
-                            onClose={this.handleClose}
-                            onOpen={this.handleOpen}
-                          >
-                            <MenuItem value="bears">Bears</MenuItem>
-                            <MenuItem value="toys">Toys</MenuItem>
-                            <MenuItem value="others">Others</MenuItem>
-                          </Select>
-                        </StyledFormControl>
-
-                      </div>
-                    )}
-                  </Field>
-                  {/* start ofcomponent add images */}
-                  <div>
-                    <div className="buttons">
-                      <button type="button" onClick={() => push('images', '')}>
-                        Add Image
-                      </button>
-                      <button type="button" onClick={() => pop('images')}>
-                        Remove Image
-                      </button>
+          {({ handleSubmit, mutators: { push, pop } }) => (
+            <ItemInfoBox>
+              <form onSubmit={handleSubmit}>
+                <Field name="title">
+                  {({ input, meta }) => (
+                    <div>
+                      <InputField
+                        {...input}
+                        helperText={meta.touched ? meta.error : undefined}
+                        error={meta.error && meta.touched}
+                        label="Имя"
+                        autoComplete="title"
+                        className="edit"
+                        type="text"
+                      />
                     </div>
-                    <FieldArray name="images">
-                      {({ fields, value }) =>
-                        fields.map((name, index) => (
-                          <div key={name}>
-                            <img src={value ? value[index] : ''}/>
-                            <Field name={name}>
-                              {({ input, meta }) => (
-                                <div>
-                                  <label>Image. #{index + 1} url</label>
-                                  <input type="text" {...input} placeholder="url"/>
-                                  <span
-                                    onClick={() => fields.remove(index)}
-                                    style={{ cursor: 'pointer' }}
-                                  >
+                  )}
+                </Field>
+                <Field name="description">
+                  {({ input, meta }) => (
+                    <div>
+                      <BigInputField
+                        {...input}
+                        helperText={meta.touched ? meta.error : undefined}
+                        error={meta.error && meta.touched}
+                        id="standard-multiline-flexible"
+                        label="Описание"
+                        multiline
+                        rowsMax="10"
+                        rows={4}
+                        className="textField"
+                        autoComplete="description"
+                        type="text"
+                      />
+                    </div>
+                  )}
+                </Field>
+                <Field name="size">
+                  {({ input, meta }) => (
+                    <div>
+                      <InputField
+                        {...input}
+                        helperText={meta.touched ? meta.error : undefined}
+                        error={meta.error && meta.touched}
+                        label="Размер"
+                        className="edit"
+                        autoComplete="size"
+                        type="text"
+                      /> см.
+                    </div>
+                  )}
+                </Field>
+                <Field name="price">
+                  {({ input, meta }) => (
+                    <div>
+                      <InputField
+                        {...input}
+                        helperText={meta.touched ? meta.error : undefined}
+                        error={meta.error && meta.touched}
+                        label="Цена"
+                        className="edit"
+                        autoComplete="price"
+                        type="text"
+                      />
+                    </div>
+                  )}
+                </Field>
+                <Field name="category">
+                  {({ input }) => (
+                    <div>
+                      <StyledFormControl>
+
+                        <InputLabel htmlFor="demo-controlled-open-select">Category</InputLabel>
+                        <Select
+                          {...input}
+                          open={this.state.open}
+                          onClose={this.handleClose}
+                          onOpen={this.handleOpen}
+                        >
+                          <MenuItem value="bears">Bears</MenuItem>
+                          <MenuItem value="toys">Toys</MenuItem>
+                          <MenuItem value="others">Others</MenuItem>
+                        </Select>
+                      </StyledFormControl>
+
+                    </div>
+                  )}
+                </Field>
+                {/* start ofcomponent add images */}
+                <div>
+                  <StyledImagesButtons >
+                    <ImagesButton type="button" onClick={() => push('images', '')}>
+                      Add Image
+                    </ImagesButton>
+                    <ImagesButton type="button" onClick={() => pop('images')}>
+                      Remove Image
+                    </ImagesButton>
+                  </StyledImagesButtons>
+                  <FieldArray name="images">
+                    {({ fields, value }) =>
+                      fields.map((name, index) => (
+                        <div key={name}>
+                          <img src={value ? value[index] : ''} />
+                          <Field name={name}>
+                            {({ input }) => (
+                              <div>
+                                <div>Image. #{index + 1} url</div>
+                                <input type="text" {...input} placeholder="url" />
+                                <div
+                                  onClick={() => fields.remove(index)}
+                                  style={{ cursor: 'pointer' }}
+                                >
                                 X
-                                </span>
                                 </div>
-                              )}
-                            </Field>
-                          </div>
-                        ))
-                      }
-                    </FieldArray>
-
-                    <div className="buttons">
-                      <button type="submit" disabled={submitting || pristine}>
-                        Submit
-                      </button>
-                      <button
-                        type="button"
-                        onClick={reset}
-                        disabled={submitting || pristine}
-                      >
-                        Reset
-                      </button>
-                    </div>
-                    <pre>{JSON.stringify(values, 0, 2)}</pre>
-                  </div>
-                  {/* end of component add images */}
-                  <OrderButton type="submit">
-                    <div> сохранить</div>
-                  </OrderButton>
-                </form>
-              </ItemInfoBox>
-            )
+                              </div>
+                            )}
+                          </Field>
+                        </div>
+                      ))
+                    }
+                  </FieldArray>
+                </div>
+                {/* end of component add images */}
+                <OrderButton type="submit">
+                  <div> сохранить</div>
+                </OrderButton>
+              </form>
+            </ItemInfoBox>
+          )
           }
         </Form>
-        <SimpleSnackbar handleError={this.handleError} error={this.state.error}/>
+        <SimpleSnackbar handleError={this.handleError} error={this.state.error} />
 
       </ItemBox>
 

@@ -32,6 +32,14 @@ const OrderButton = styled(MyButton)`
    margin-top: 45px !important;
    width: 100px;
 `
+const AddButton = styled(MyButton)`
+&.button {
+   background: linear-gradient(45deg, #F4D718 30%, #2CD32F 90%) !important;
+   width: 100px;
+   margin-bottom: 15px;
+   }
+`
+
 const DeleteButton = styled(MyButton)`
 &.button {
    background: linear-gradient(45deg, #f12711 30%, #f5af19 90%) !important;
@@ -89,6 +97,11 @@ export class Admin extends Component {
     return (
       <CardWrapper>
         <h1>hello</h1>
+        <AddButton>
+          <StyledLink to="/add">
+            add new
+          </StyledLink>
+        </AddButton>
         <StyledPaper>
           <StyledTable>
             <TableHead>
