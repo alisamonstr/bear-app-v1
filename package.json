@@ -33,7 +33,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
-    "deploy": "bears-store.surge.sh"
+    "deploy": "surge build bears-store.surge.sh"
   },
   "devDependencies": {
     "eslint": "4.9.0",
